@@ -23,7 +23,7 @@ import xaero.common.misc.Misc;
 public abstract class XaeroMinimapWaypointsIngameRendererMixin {
     @Inject(method = "renderWaypointLabel", at = @At(value = "INVOKE",
       target = "Lxaero/common/misc/Misc;drawNormalText(Lnet/minecraft/client/util/math/MatrixStack;Ljava/lang/String;FFIZLnet/minecraft/client/render/VertexConsumerProvider$Immediate;)V",
-      shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
+      shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD, require = 0)
     private void renderWaypointLabel(MatrixStack matrixStack, MinimapRendererHelper helper, TextRenderer fontrenderer, String label, double labelScale, float bgAlpha, VertexConsumerProvider.Immediate renderTypeBuffer, VertexConsumer waypointBackgroundConsumer, CallbackInfo ci, int nameW, int bgW, int halfBgW, int halfNamePixel) {
         if (!IWant2TryHardTweaksConfig.xaeroMinimapDistanceTimer) return;
         if (IWant2TryHardTweaksConfig.debug) System.out.println("Rendering Waypoint Label");
