@@ -3,9 +3,11 @@
   "minVersion": "0.8",
   "package": "com.thaddev.iwant2tryhardtweaks.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [
-  ],
   "client": [
+    "GameRendererMixin",
+    "HeldItemRendererMixin",
+    "ParticleManagerMixin",
+    "XaeroMinimapWaypointsIngameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

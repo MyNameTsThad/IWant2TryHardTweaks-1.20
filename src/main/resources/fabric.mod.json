@@ -2,25 +2,32 @@
   "schemaVersion": 1,
   "id": "iwant2tryhardtweaks",
   "version": "${version}",
-
-  "name": "IWant2TryHardTweaks",
+  "name": "IWant2TryHard's Tweaks",
   "description": "random client side tweaks i want",
-  "authors": [],
-  "contact": {},
-
+  "authors": [
+    "IWant2TryHard"
+  ],
+  "contact": {
+    "repo": "https://github.com/MyNameTsThad/IWant2TryHardTweaks-1.20"
+  },
   "license": "MIT",
   "icon": "assets/iwant2tryhardtweaks/icon.png",
-
-  "environment": "*",
-  "entrypoints": {},
-
-      "mixins": [
-        "iwant2tryhardtweaks.mixins.json"
-      ],
-
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.thaddev.iwant2tryhardtweaks.IWant2TryHardTweaks"
+    ],
+    "modmenu": [
+      "com.thaddev.iwant2tryhardtweaks.IWant2TryHardTweaksConfigMenuImpl"
+    ]
+  },
+  "mixins": [
+    "iwant2tryhardtweaks.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
-        "fabric": "*",
+    "fabric": "*",
     "minecraft": "${minecraft_version}"
-  }
+  },
+  "accessWidener": "iwant2tryhardtweaks.accesswidener"
 }
