@@ -58,29 +58,31 @@ public class IWant2TryHardTweaks implements ClientModInitializer {
 
         //keybind functions
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.world != null && client.getCameraEntity() != null) {
-                if (recipesKey.isPressed()) {
-                    Entity camera = client.getCameraEntity();
-                    HitResult blockHit = camera.raycast(20.0, 0.0f, true);
-                    if (blockHit != null && blockHit.getType() == HitResult.Type.BLOCK) {
-                        BlockState blockState = client.world.getBlockState(((BlockHitResult) blockHit).getBlockPos());
-                        Block block = blockState.getBlock();
-                        if (block instanceof FluidBlock) {
-                            openREIRecipeScreenFor(((FluidBlock) block).getFluidState(blockState).getFluid());
-                        } else {
-                            openREIRecipeScreenFor(block);
+            if (FabricLoader.getInstance().isModLoaded("roughlyenoughitems")) {
+                if (client.world != null && client.getCameraEntity() != null) {
+                    if (recipesKey.isPressed()) {
+                        Entity camera = client.getCameraEntity();
+                        HitResult blockHit = camera.raycast(20.0, 0.0f, true);
+                        if (blockHit != null && blockHit.getType() == HitResult.Type.BLOCK) {
+                            BlockState blockState = client.world.getBlockState(((BlockHitResult) blockHit).getBlockPos());
+                            Block block = blockState.getBlock();
+                            if (block instanceof FluidBlock) {
+                                openREIRecipeScreenFor(((FluidBlock) block).getFluidState(blockState).getFluid());
+                            } else {
+                                openREIRecipeScreenFor(block);
+                            }
                         }
-                    }
-                } else if (usagesKey.isPressed()) {
-                    Entity camera = client.getCameraEntity();
-                    HitResult blockHit = camera.raycast(20.0, 0.0f, true);
-                    if (blockHit != null && blockHit.getType() == HitResult.Type.BLOCK) {
-                        BlockState blockState = client.world.getBlockState(((BlockHitResult) blockHit).getBlockPos());
-                        Block block = blockState.getBlock();
-                        if (block instanceof FluidBlock) {
-                            openREIUsageScreenFor(((FluidBlock) block).getFluidState(blockState).getFluid());
-                        } else {
-                            openREIUsageScreenFor(block);
+                    } else if (usagesKey.isPressed()) {
+                        Entity camera = client.getCameraEntity();
+                        HitResult blockHit = camera.raycast(20.0, 0.0f, true);
+                        if (blockHit != null && blockHit.getType() == HitResult.Type.BLOCK) {
+                            BlockState blockState = client.world.getBlockState(((BlockHitResult) blockHit).getBlockPos());
+                            Block block = blockState.getBlock();
+                            if (block instanceof FluidBlock) {
+                                openREIUsageScreenFor(((FluidBlock) block).getFluidState(blockState).getFluid());
+                            } else {
+                                openREIUsageScreenFor(block);
+                            }
                         }
                     }
                 }
@@ -90,49 +92,40 @@ public class IWant2TryHardTweaks implements ClientModInitializer {
     }
 
     public static void openREIRecipeScreenFor(ItemEntity itemEntity) {
-        if (FabricLoader.getInstance().isModLoaded("roughlyenoughitems")) {
-            EntryStack<?> stack = EntryStacks.of(itemEntity.getStack());
-            ViewSearchBuilder.builder().addRecipesFor(stack).open();
-        }
+
+        EntryStack<?> stack = EntryStacks.of(itemEntity.getStack());
+        ViewSearchBuilder.builder().addRecipesFor(stack).open();
     }
 
     public static void openREIRecipeScreenFor(Block block) {
-        if (FabricLoader.getInstance().isModLoaded("roughlyenoughitems")) {
-            if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + block);
-            EntryStack<?> stack = EntryStacks.of(block);
-            ViewSearchBuilder.builder().addRecipesFor(stack).open();
-        }
+        if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + block);
+        EntryStack<?> stack = EntryStacks.of(block);
+        ViewSearchBuilder.builder().addRecipesFor(stack).open();
+
     }
 
     public static void openREIRecipeScreenFor(Fluid fluid) {
-        if (FabricLoader.getInstance().isModLoaded("roughlyenoughitems")) {
-            if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + fluid);
-            EntryStack<?> stack = EntryStacks.of(fluid);
-            ViewSearchBuilder.builder().addRecipesFor(stack).open();
-        }
+        if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + fluid);
+        EntryStack<?> stack = EntryStacks.of(fluid);
+        ViewSearchBuilder.builder().addRecipesFor(stack).open();
+
     }
 
     public static void openREIUsageScreenFor(ItemEntity itemEntity) {
-        if (FabricLoader.getInstance().isModLoaded("roughlyenoughitems")) {
-            EntryStack<?> stack = EntryStacks.of(itemEntity.getStack());
-            ViewSearchBuilder.builder().addUsagesFor(stack).open();
-        }
+        EntryStack<?> stack = EntryStacks.of(itemEntity.getStack());
+        ViewSearchBuilder.builder().addUsagesFor(stack).open();
     }
 
     public static void openREIUsageScreenFor(Block block) {
-        if (FabricLoader.getInstance().isModLoaded("roughlyenoughitems")) {
-            if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + block);
-            EntryStack<?> stack = EntryStacks.of(block);
-            ViewSearchBuilder.builder().addUsagesFor(stack).open();
-        }
+        if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + block);
+        EntryStack<?> stack = EntryStacks.of(block);
+        ViewSearchBuilder.builder().addUsagesFor(stack).open();
     }
 
     public static void openREIUsageScreenFor(Fluid fluid) {
-        if (FabricLoader.getInstance().isModLoaded("roughlyenoughitems")) {
-            if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + fluid);
-            EntryStack<?> stack = EntryStacks.of(fluid);
-            ViewSearchBuilder.builder().addUsagesFor(stack).open();
-        }
+        if (IWant2TryHardTweaksConfig.debug) System.out.println("Opening REI for " + fluid);
+        EntryStack<?> stack = EntryStacks.of(fluid);
+        ViewSearchBuilder.builder().addUsagesFor(stack).open();
     }
 
 //    public static Entity getTargeted(MinecraftClient client, float tickDelta) {
